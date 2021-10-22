@@ -12,17 +12,29 @@ export default function Home() {
         <link rel="icon" href="/round-hotel-sign.png" />
       </Head>
 
-      <main className='container mx-auto flex'>
-        <h1 className='flex'>
-          Welcome to <a href="http://localhost:3000">My Website</a>
-        </h1>
-        <span>
-          <Image src='/AvatarMaker.png' alt='Avatar' width={100} height={120}/>
-        </span>
-        <p className='flex'>
-          Hapnan Arsad Riski{' '}
-        </p>
-        <code className='flex'>Back-end developer</code>
+      <main className='container mx-auto'>
+        <div className="flex-col mx-auto h-screen bg-coding">
+          <Image
+            className = "z-0 h-screen w-sreen"
+            src = "/working-code.jpg"
+            alt = "backgound"
+            layout = "fill"
+            objectFit = "cover"
+            objectPosition = "center"
+          />
+          <div className="relative flex flex-col h-screen z-10 mx-auto justify-center items-center">
+            <h1 className="text-5xl">
+              Welcome to <a className="ml-1 box-border text-blue-500" href="http://localhost:3000">My Website</a>
+            </h1>
+            <span >
+              <Image className="box-border shadow-md p-2 bg-gray-50 rounded-full" src='/AvatarMaker.png' alt='Avatar' width={140} height={140}/>
+            </span>
+            <p className="text-3xl">
+              I'm a junior <code className="box-border rounded-sm p-1 w-auto bg-gray-200">Back-end developer</code>
+            </p>
+            
+          </div>
+        </div>
 
         </main>
     </div>
