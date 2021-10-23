@@ -1,8 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRef } from 'react'
 
 
 export default function Home() {
+  const contact = useRef()
+
+  function ClickContact() {
+    contact.current.scrollIntoView({
+      behavior : 'smooth'
+    })
+  }
+
   return (
     <div className='flex'>
       <Head>
@@ -32,40 +41,60 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="contact">
-                  <button className="flex shadow w-auto block border-gray-200 border-2 rounded-full focus:outline-none focus:border-gray-300 px-4 py-2 text-gray-100 hover:bg-gray-300 hover:text-black">
-                      <svg className="inline-block h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387A7.731 7.731 0 007.1 19h5.8a7.68 7.68 0 001.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3s2 .754 2 2.199V8z"/>
+                  <button onClick={ClickContact} className="flex items-center justify-center shadow w-auto block border-gray-200 border-2 rounded-full focus:outline-none focus:border-gray-300 px-4 py-2 text-gray-100 hover:bg-gray-300 hover:text-black">
+                      <svg className="inline-block h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                       </svg>
-                      Button
+                      {/* <svg className="inline-block h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387A7.731 7.731 0 007.1 19h5.8a7.68 7.68 0 001.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3s2 .754 2 2.199V8z"/>
+                      </svg> */}
+                      Contact
                   </button>
                 </div>
               </div>
             </div>
         </nav>
-        <div className="relative flex-col mx-auto h-screen bg-coding text-gray-100	">
-          <Image
-            className = "z-0 h-screen w-sreen"
-            src = "/working-code.jpg"
-            alt = "backgound"
-            layout = "fill"
-            objectFit = "cover"
-            objectPosition = "center"
-          />
-          <div className="relative flex flex-col -mt-16 h-screen z-10 mx-auto justify-center items-center">
-            <h1 className="text-5xl">
+        <div className="relative mx-auto h-screen bg-coding text-gray-100 bg-pf bg-cover bg-center bg-no-repeat -mt-16">
+          <div className="relative flex flex-col  h-screen z-10 mx-auto justify-center items-center transition duration-500 ease-in">
+            <h1 className="md:text-5xl text-4xl">
               Welcome to <a className="ml-1 box-border text-blue-500" href="http://localhost:3000">My Website</a>
             </h1>
             <span >
               <Image className="box-border shadow-md p-2 bg-gray-50 rounded-full" src='/AvatarMaker.png' alt='Avatar' width={140} height={140}/>
             </span>
-            <p className="text-3xl">
+            <p className="md:text-3xl text-xl">
               I&apos;m a junior <code className="box-border rounded-sm p-1 w-auto bg-gray-200 text-black">Back-end developer</code>
             </p>
             
           </div>
         </div>
 
-        </main>
+        <div ref={contact} className="container">
+          <div className="project h-screen">
+            <span className="text-center">
+              <h1 className="md:text-5xl text-xl mt-3">
+                Github Project
+              </h1>
+            </span>
+            <div className="card flex flex-col box-border w-60 h-auto m-2 rounded-md border-2 shadow-md divide-y-2 divide-blue-500">
+              <div className="card-head text-center p-2">
+                <h3 className="text-xl">Nama Project</h3>
+                <p className="text-s">Tanggal Project</p>
+              </div>
+              <div className="card-body flex justify-center text-center p-2">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt, qui atque impedit quisquam, quia veritatis repellendus placeat aliquam beatae minima dignissimos, accusamus nihil obcaecati pariatur! Tempore, tempora magnam? Enim.
+              </div>
+              <div className="card-footer flex p-2">
+                <svg className="inline-block h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   )
 }
