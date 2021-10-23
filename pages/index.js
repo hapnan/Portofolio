@@ -13,10 +13,10 @@ export default function Home() {
       </Head>
 
       <main className='container mx-auto'>
-        <nav className="sticky z-10 items-center ">
+        <nav className="sticky z-20 items-center text-gray-100 bg-blue-500 bg-opacity-50">
             <div className="max-w-7x1 mx-auto px-2 sm:px-6 lg:px-8">
               <div className="relative flex items-center justify-between h-16">
-                <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex items-center justify-center align-middle sm:items-stretch sm:justify-start">
                   <div className="icon h-10 w-10 flex items-center">
                     <Image 
                       src="/round-hotel-sign.png" 
@@ -27,12 +27,22 @@ export default function Home() {
                       height="100%" 
                     />
                   </div>
-                    <p>Hapnan AR</p>
+                  <span className="flex items-center ml-1">
+                    <p className="text-xl font-medium">Hapnan AR</p>
+                  </span>
+                </div>
+                <div className="contact">
+                  <button className="flex shadow w-auto block border-gray-200 border-2 rounded-full focus:outline-none focus:border-gray-300 px-4 py-2 text-gray-100 hover:bg-gray-300 hover:text-black">
+                      <svg className="inline-block h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387A7.731 7.731 0 007.1 19h5.8a7.68 7.68 0 001.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3s2 .754 2 2.199V8z"/>
+                      </svg>
+                      Button
+                  </button>
                 </div>
               </div>
             </div>
         </nav>
-        <div className="flex-col mx-auto h-screen bg-coding">
+        <div className="relative flex-col mx-auto h-screen bg-coding text-gray-100	">
           <Image
             className = "z-0 h-screen w-sreen"
             src = "/working-code.jpg"
@@ -49,7 +59,7 @@ export default function Home() {
               <Image className="box-border shadow-md p-2 bg-gray-50 rounded-full" src='/AvatarMaker.png' alt='Avatar' width={140} height={140}/>
             </span>
             <p className="text-3xl">
-              I'm a junior <code className="box-border rounded-sm p-1 w-auto bg-gray-200">Back-end developer</code>
+              I&apos;m a junior <code className="box-border rounded-sm p-1 w-auto bg-gray-200 text-black">Back-end developer</code>
             </p>
             
           </div>
