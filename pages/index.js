@@ -1,9 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRef } from 'react'
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  gql
+} from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 
 
-export default function Home() {
+export default function Home({ repos }) {
+  console.log(repos);
   const contact = useRef()
 
   function ClickContact() {
@@ -70,7 +78,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div ref={contact} className="container">
+        <div className="container">
           <div className="project h-screen">
             <span className="text-center">
               <h1 className="md:text-5xl text-xl mt-3">
@@ -94,7 +102,67 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div ref={contact} className="container">
+          <div className="contact h-screen">
+            <p>asasdadasda</p>
+          </div>
+        </div>
       </main>
     </div>
   )
+}
+
+
+export async function getStaticPorps(context) {
+  const httpLink = createHttpLink({
+    uri: 'https://api.github.com/graphql',
+  });
+  
+  const authLink = setContext((_, { headers }) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+      }
+    }
+  });
+  
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
+  });
+
+  const { data } = await client.query({
+    query : gql`
+      {
+        user(login: "hapnan") {
+          repositories(first: 10) {
+            edges {
+              node {
+                name
+                createdAt
+                description
+                languages(first: 10) {
+                  nodes {
+                    color
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  })
+  const user = data;
+  const repos = user.repositories.edges.map(({node}) => node);
+
+  console.log(data);
+  return{
+    props: {
+      repos
+    }
+  }
 }
